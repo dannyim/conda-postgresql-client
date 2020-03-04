@@ -1,10 +1,18 @@
 #!/bin/bash
 
+export LDFLAGS="$LDFLAGS -Wl,-rpath,$BUILD_PREFIX/lib"
+
 if [ `uname` == Linux ]; then
 	chmod +x configure
 	./configure \
 		--prefix=$PREFIX \
-		--enable-thread-safety	
+		--enable-thread-safety \
+		--with-openssl \
+		--with-zlib \
+		--without-python \
+		--without-perl \
+		--without-tcl \
+		--libdir="${PREFIX}/lib"
 fi
 
 make || exit 1

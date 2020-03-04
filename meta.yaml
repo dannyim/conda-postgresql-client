@@ -1,11 +1,10 @@
 package:
-  name: postgresql-client
-  version: 8.4.17
+    name: postgresql-client
+    version: 9.5.21
 
 source:
-  fn: postgresqql-8.4.17.tar.gz
-  url: http://ftp.postgresql.org/pub/source/v8.4.17/postgresql-8.4.17.tar.gz
-  md5: e128152d990e0bea9fd8372ed2f9a978
+  url: http://ftp.postgresql.org/pub/source/v9.5.21/postgresql-9.5.21.tar.gz
+  md5: c1a99f2d17b6de1f305fef9d9f6d2235
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -24,10 +23,22 @@ source:
   # number. If you do not include this key, it defaults to 0.
   # number: 1
 
-#requirements:
-#  build:
-#    - python
-#    - distribute
+requirements:
+    build:
+        - {{ compiler('c') }}
+    host:
+        - openssl 1.0
+        - gettext
+        - readline 6.2
+        - zlib
+    run:
+        - libpq
+
+#outputs:
+#     - name: libpq
+#        files:
+#        - lib/libpq.so 
+#        - lib/libpq.so.*
 
 about:
   home: http://www.postgresql.org

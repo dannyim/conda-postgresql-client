@@ -1,3 +1,5 @@
+`conda build . -c conda-forge`
+
 Required packages:
 
-chrpath
+readline=6.2 (from conda-forge)
