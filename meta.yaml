@@ -1,44 +1,23 @@
 package:
     name: postgresql-client
-    version: 9.5.21
+    version: 11.7
 
 source:
-  url: http://ftp.postgresql.org/pub/source/v9.5.21/postgresql-9.5.21.tar.gz
-  md5: c1a99f2d17b6de1f305fef9d9f6d2235
-#  patches:
-   # List any patch files here
-   # - fix.patch
-
-# build:
-  # entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - paste = paste:main
-    #
-    # Would create an entry point called paste that calls paste.main()
-
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  url: http://ftp.postgresql.org/pub/source/v11.7/postgresql-11.7.tar.gz
+  md5: abb131b13e3183fcc1449f4dbd1a0f2c
 
 requirements:
     build:
         - {{ compiler('c') }}
+        - pkg-config
     host:
-        - openssl 1.0
-        - gettext
-        - readline 6.2
-        - zlib
+        - openssl {{ openssl }}
+        - libedit {{ libedit }}
+        - zlib {{ zlib }}
     run:
         - libpq
-
-#outputs:
-#     - name: libpq
-#        files:
-#        - lib/libpq.so 
-#        - lib/libpq.so.*
+        - libedit {{ libedit }}
+        - openssl {{ openssl }}
 
 about:
   home: http://www.postgresql.org

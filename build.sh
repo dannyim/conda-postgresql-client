@@ -10,8 +10,10 @@ if [ `uname` == Linux ]; then
 		--with-openssl \
 		--with-zlib \
 		--without-python \
+		--with-libedit-preferred \
 		--without-perl \
 		--without-tcl \
+		--enable-rpath \
 		--libdir="${PREFIX}/lib"
 fi
 
